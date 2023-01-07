@@ -30,11 +30,12 @@ goto Vbox_util
 cd %programfiles%\Oracle\VirtualBox
 start "" VirtualBox.exe
 echo VBoxmanage createmedium disk --filename=C:\Users\%username%\Documents\vmdk_files\%filename_vmdk%.vmdk --variant=RawDisk --format=VMDK --property RawDrive=\\.\PhysicalDrive%USBnum%> "%cd%\temp_vbox_createrawvmdk.bat"
+timeout /t 5
 call "%cd%\temp_vbox_createrawvmdk.bat"
 timeout /t 3
 del "%cd%\temp_vbox_createrawvmdk.bat"
 echo done . . . 
-start C:\Users\%username%\Documents\vmdk_files
+PAUSE
 goto eof
 rem this command deprecated : VBoxManage internalcommands createrawvmdk -filename C:users\%username%\documents\vmdk_files\%filename% -rawdisk \\.\PhysicalDrive%USBnum%
 
